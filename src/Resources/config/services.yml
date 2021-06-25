@@ -1,0 +1,6 @@
+services:
+  Sylius\Component\Core\Dashboard\SalesDataProviderInterface:
+    class: Adexos\SyliusPostgreCompatibilityPlugin\DataProvider\SalesDataProvider
+    public: true
+    arguments:
+      - '@sylius.repository.order'

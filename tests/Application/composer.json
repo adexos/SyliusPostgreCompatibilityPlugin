@@ -1,0 +1,8 @@
+{
+    "name": "sylius/plugin-skeleton-test-application",
+    "description": "Sylius application for plugin testing purposes (composer.json needed for project dir resolving)",
+    "license": "MIT",
+    "require-dev": {
+        "theofidry/alice-data-fixtures": "^1.4"
+    }
+}
