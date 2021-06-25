@@ -1,5 +1,6 @@
 {
     "name": "adexos/sylius-postgre-compatibility-plugin",
+    "version": "v1.10.0-beta.1",
     "type": "sylius-plugin",
     "description": "PostgreSQL compatibility bundle",
     "keywords": [
