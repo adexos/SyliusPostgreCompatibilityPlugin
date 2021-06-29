@@ -23,4 +23,5 @@ class SyliusPostgreCompatibilityPlugin extends Bundle
         ]));
         $container->addCompilerPass(new OverrideServiceCompilerPass());
     }
+
 }
