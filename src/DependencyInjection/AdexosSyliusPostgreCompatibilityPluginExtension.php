@@ -12,13 +12,17 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class SyliusPostgreCompatibilityPluginExtension extends Extension implements PrependExtensionInterface
+class AdexosSyliusPostgreCompatibilityPluginExtension extends Extension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container): void
     {
-
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
+        $container->setParameter('adexos_sylius_postgre_compatibility_plugin', $config);
     }
 
     public function prepend(ContainerBuilder $container): void

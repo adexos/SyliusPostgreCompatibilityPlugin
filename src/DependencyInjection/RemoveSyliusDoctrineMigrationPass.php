@@ -11,15 +11,16 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class RemoveSyliusDoctrineMigrationPass implements CompilerPassInterface
 {
-    private array $disallowedNamespaces;
-
-    public function __construct(array $disallowedNamespaces = [])
-    {
-        $this->disallowedNamespaces = $disallowedNamespaces;
-    }
+    public $defaultDisallowedNamespaces = [
+        'Sylius\PayPalPlugin\Migrations',
+        'Sylius\Bundle\CoreBundle\Migrations'
+    ];
 
     public function process(ContainerBuilder $container): void
     {
+        $bundleConfig = $container->getParameter('adexos_sylius_postgre_compatibility_plugin');
+        $disallowedNamespaces = $this->prepareExcludedNamespaces($bundleConfig);
+
         if ( ! $container->hasDefinition('doctrine.migrations.configuration')) {
             return;
         }
@@ -36,11 +37,18 @@ class RemoveSyliusDoctrineMigrationPass implements CompilerPassInterface
                 continue;
             }
 
-            if (!in_array($call[1][0], $this->disallowedNamespaces, true)) {
+            if (!in_array($call[1][0], $disallowedNamespaces, true)) {
                 $sanitizedMethodCalls[] = $call;
             }
         }
 
         $definition->setMethodCalls($sanitizedMethodCalls);
+    }
+
+    protected function prepareExcludedNamespaces(array $bundleConfig): array
+    {
+        $disallowedNamespaces = $bundleConfig['excluded_migration_namespaces'];
+
+        return array_merge($disallowedNamespaces, $this->defaultDisallowedNamespaces);
     }
 }

@@ -17,6 +17,15 @@
 
 ```php
     return [
-        Adexos\SyliusPostgreCompatibilityPlugin\SyliusPostgreCompatibilityPlugin::class => ['all' => true],
+        Adexos\SyliusPostgreCompatibilityPlugin\AdexosSyliusPostgreCompatibilityPlugin::class => ['all' => true],
     ];
+```
+
+3. Unregister migrations namespace if needed
+
+config/packages/adexos_sylius_postgre_compatibility_plugin.yaml
+```yaml
+adexos_sylius_postgre_compatibility_plugin:
+  excluded_migration_namespaces:
+    - Vendor\Namespace\Migrations
 ```
