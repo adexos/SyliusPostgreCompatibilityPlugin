@@ -30,5 +30,11 @@ class AdexosSyliusPostgreCompatibilityPluginExtension extends Extension implemen
         $container->prependExtensionConfig('doctrine_migrations', ['migrations_paths' => [
             'Adexos\SyliusPostgreCompatibilityPlugin\Migrations' => __DIR__ . '/../Migrations'
         ]]);
+
+        $container->prependExtensionConfig('sylius_labs_doctrine_migrations_extra', [
+            'migrations' => [
+                'Adexos\SyliusPostgreCompatibilityPlugin\Migrations' => [],
+            ],
+        ]);
     }
 }
