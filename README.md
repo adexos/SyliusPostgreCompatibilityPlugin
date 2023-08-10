@@ -8,12 +8,14 @@
 <p align="center">This plugin provide PostgreSQL compatibility for Sylius</p>
 <hr/>
 
-⚠️ Version of the module follow sylius versioning, be sure to use the correct tag for you're installed version.    
-We create a new version each time new Sylius release include a new migration.  
-Please read Sylius upgrade guides.
+[![Settings Plugin license](https://img.shields.io/github/license/adexos/SyliusPostgreCompatibilityPlugin?public)](https://github.com/adexos/SyliusPostgreCompatibilityPlugin/blob/master/LICENSE)
+
+⚠️ Versions of this module follow Sylius versioning. Be sure to use the tag matching your Sylius version.
+New version will be release for each new Sylius release including a migration.  
+Please read Sylius upgrading guides.
 
 
-## Documentation
+## Installation
 
 1. Run `composer require adexos/sylius-postgre-compatibility-plugin`.
 
@@ -27,13 +29,13 @@ Please read Sylius upgrade guides.
 
 3. Unregister migrations namespace if needed
 
-config/packages/adexos_sylius_postgre_compatibility_plugin.yaml
+In `config/packages/adexos_sylius_postgre_compatibility_plugin.yaml`
 ```yaml
 adexos_sylius_postgre_compatibility_plugin:
   excluded_migration_namespaces:
     - Vendor\Namespace\Migrations
 ```
-Then you can re-generate and apply migration for postgre with this command: 
+Then you can re-generate and apply migrations for PostgreSQL with these commands: 
 ```php
 bin/console doctrine:migration:diff
 bin/console doctrine:migration:migrate
