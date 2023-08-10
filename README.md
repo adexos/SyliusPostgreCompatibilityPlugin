@@ -10,8 +10,8 @@
 
 [![Settings Plugin license](https://img.shields.io/github/license/adexos/SyliusPostgreCompatibilityPlugin?public)](https://github.com/adexos/SyliusPostgreCompatibilityPlugin/blob/master/LICENSE)
 
-⚠️ Versions of this module follow Sylius versioning. Be sure to use the tag matching your Sylius version.
-New version will be release for each new Sylius release including a migration.  
+⚠️ Versions of this module follow Sylius versioning. Be sure to use the tag matching your Sylius version.  
+New version will be released for each Sylius release including a migration.  
 Please read Sylius upgrading guides.
 
 
